@@ -1,19 +1,19 @@
+const Users = [ { username: "admin", password: "666" },  { username: "admin", password: "123" }]
 class User{
     constructor(username,password) {
         this.username = username;
         this.password   = password;
     }
     login(){
-    	let message="Ha habido un error";
-    	if(this.username=="admin" && this.password=="123"){
-        	message="Ha iniciado sesión correctamente";
-	    }else{
-	        message="No se encontró registro de un usuario "+this.username+" con la clave ingresada";
-	    }
+    	let message="No se encontró registro de un usuario "+this.username+" con la clave ingresada";
+		for (const user of Users) {			
+	    	if(this.username==user.username && this.password==user.password){
+	        	message="Ha iniciado sesión correctamente";
+		    }
+		}
     	alert(message);
     }
 }
-
 function login(){
     let user   = prompt("Ingresar usuario");
     let pass   = prompt("Ingresar clave");
