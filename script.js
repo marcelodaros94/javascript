@@ -11,7 +11,15 @@ class User{
 	        	message="Ha iniciado sesión correctamente";
 		    }
 		}
-    	alert(message);
+
+		let msg_element = document.createElement("div");
+		msg_element.innerHTML = "<p style='color:brown'>"+message+"</p>"; 
+		document.body.appendChild(msg_element);
+
+    	if(message=="Ha iniciado sesión correctamente"){
+	    	let form_element      = document.getElementsByTagName("form")[0];
+			form_element.parentNode.removeChild(form_element);
+		}
     }
 }
 function login(){
