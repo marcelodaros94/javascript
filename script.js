@@ -15,17 +15,16 @@ class User{
 		let msg_element = document.createElement("div");
 		msg_element.innerHTML = "<p style='color:brown'>"+message+"</p>"; 
 		document.body.appendChild(msg_element);
+    	alert(message)
 
-    	if(message=="Ha iniciado sesión correctamente"){
-	    	let form_element      = document.getElementsByTagName("form")[0];
-			form_element.parentNode.removeChild(form_element);
-		}
     }
 }
-function login(){
-    let user   = prompt("Ingresar usuario");
-    let pass   = prompt("Ingresar clave");
+function login(e){	
+    e.preventDefault();
+    let user   = document.getElementById("InputUsername").value;
+    let pass   = document.getElementById("InputPassword").value;
 	const user1 = new User(user,pass);
 	user1.login();
 } 
-login();
+let miFormulario      = document.getElementById("formulario");
+miFormulario.addEventListener("submit", login);
