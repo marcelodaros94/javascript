@@ -1,30 +1,45 @@
+//JSON
 const Users = [ { username: "admin", password: "666" },  { username: "admin", password: "123" }]
+//clases
 class User{
     constructor(username,password) {
         this.username = username;
         this.password   = password;
     }
     login(){
-    	let message="No se encontró registro de un usuario "+this.username+" con la clave ingresada";
+    	let message="Intente más tarde";
+    	let access=0;
 		for (const user of Users) {			
 	    	if(this.username==user.username && this.password==user.password){
-	        	message="Ha iniciado sesión correctamente";
+	        	access=1;
 		    }
 		}
-
+		if(access>0){
+			message="Ha iniciado sesión correctamente";
+			sessionStorage.clear();
+			sessionStorage.setItem("user", this.username);
+		}else{
+    		message="Hay un error en su usuario o clave";
+    	}
 		let msg_element = document.createElement("div");
-		msg_element.innerHTML = "<p style='color:brown'>"+message+"</p>"; 
+		//Aquí usaremos el user llamandolo del storage, 
+		//pero tambien en paginas futuras podriamos capturarlo 
+		//ya que esta almacenado en el navegador
+		msg_element.innerHTML = "<strong>Bienvenido "+
+			sessionStorage.getItem("user")+"</strong><p style='color:brown'>"+message+"</p>"; 
 		document.body.appendChild(msg_element);
     	alert(message)
 
     }
 }
+//funciones
 function login(e){	
-    e.preventDefault();
+    e.preventDefault();//evitamos que se refresque la pag
     let user   = document.getElementById("InputUsername").value;
     let pass   = document.getElementById("InputPassword").value;
 	const user1 = new User(user,pass);
 	user1.login();
 } 
+//eventos en el DOM
 let miFormulario      = document.getElementById("formulario");
 miFormulario.addEventListener("submit", login);
