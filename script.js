@@ -18,6 +18,8 @@ class User{
 			message="Ha iniciado sesión correctamente";
 			sessionStorage.clear();
 			sessionStorage.setItem("user", this.username);
+			message="<strong>Bienvenido "+
+			sessionStorage.getItem("user")+"</strong>";
 		}else{
     		message="Hay un error en su usuario o clave";
     	}
@@ -25,8 +27,7 @@ class User{
 		//Aquí usaremos el user llamandolo del storage, 
 		//pero tambien en paginas futuras podriamos capturarlo 
 		//ya que esta almacenado en el navegador
-		msg_element.innerHTML = "<strong>Bienvenido "+
-			sessionStorage.getItem("user")+"</strong><p style='color:brown'>"+message+"</p>"; 
+		msg_element.innerHTML = "<p style='color:brown'>"+message+"</p>"; 
 		document.body.appendChild(msg_element);
     	alert(message)
 
