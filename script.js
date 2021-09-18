@@ -23,24 +23,21 @@ class User{
 		}else{
     		message="Hay un error en su usuario o clave";
     	}
-		let msg_element = document.createElement("div");
 		//Aquí usaremos el user llamandolo del storage, 
 		//pero tambien en paginas futuras podriamos capturarlo 
 		//ya que esta almacenado en el navegador
-		msg_element.innerHTML = "<p style='color:brown'>"+message+"</p>"; 
-		document.body.appendChild(msg_element);
-    	alert(message)
-
+		$('body').append("<div><p style='color:brown'>"+message+"</p></div>");
     }
 }
 //funciones
-function login(e){	
-    e.preventDefault();//evitamos que se refresque la pag
-    let user   = document.getElementById("InputUsername").value;
-    let pass   = document.getElementById("InputPassword").value;
+function login(){	
+    let user   = $("#InputUsername").val();
+    let pass   = $("#InputPassword").val();
 	const user1 = new User(user,pass);
 	user1.login();
 } 
 //eventos en el DOM
-let miFormulario      = document.getElementById("formulario");
-miFormulario.addEventListener("submit", login);
+$("#formulario").submit(function (e) {
+	e.preventDefault();//evitamos que se refresque la pag
+	login();
+});
