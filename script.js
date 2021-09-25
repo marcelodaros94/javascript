@@ -1,5 +1,18 @@
 //JSON
 const Users = [ { username: "admin", password: "666" },  { username: "admin", password: "123" }]
+
+$.getJSON("users.json", function (respuesta, estado) {
+    if(estado === "success"){
+      Users = respuesta;/*
+      for (const dato of misDatos) {
+        $("body").prepend(`<div>
+                                <h3>${dato.name}</h3>
+                                <p> ${dato.email}</p>
+                            </div>`)
+      }  */
+    }
+});
+
 //clases
 class User{
     constructor(username,password) {
