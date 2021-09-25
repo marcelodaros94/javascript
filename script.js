@@ -13,6 +13,8 @@ class User{
         this.password   = password;
     }
     login(){
+    	$("#exitomsg").hide();
+		$("#errormsg").hide();
     	let message="Intente más tarde";
     	let access=0;
 		for (const user of Users) {			
