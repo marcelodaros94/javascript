@@ -26,13 +26,11 @@ class User{
 			sessionStorage.setItem("user", this.username);
 			message="<strong>Bienvenido "+
 			sessionStorage.getItem("user")+"</strong>";
+			$("#exitomsg p").html(message);
+			$("#exitomsg").show();
 		}else{
-    		message="Hay un error en su usuario o clave";
-    	}
-		//Aquí usaremos el user llamandolo del storage, 
-		//pero tambien en paginas futuras podriamos capturarlo 
-		//ya que esta almacenado en el navegador
-		$('body').append("<div><p style='color:brown'>"+message+"</p></div>");
+			$("#errormsg").show();
+		}
     }
 }
 //funciones
