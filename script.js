@@ -1,14 +1,8 @@
 //JSON
-
+var Users=[];
 $.getJSON("users.json", function (respuesta, estado) {
     if(estado === "success"){
-      const Users = respuesta;/*
-      for (const dato of misDatos) {
-        $("body").prepend(`<div>
-                                <h3>${dato.name}</h3>
-                                <p> ${dato.email}</p>
-                            </div>`)
-      }  */
+      Users = respuesta;
     }
 });
 
